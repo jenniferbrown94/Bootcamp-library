@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="js/app.js"></script>
 <meta charset="UTF-8">
 <title>Dog Library - Customer View</title>
 </head>
 <body>
-<div id="list-panel">
-			<button onclick="items();">View Items</button>
+<div id="input-panel">
+			<h3>Input</h3>
+			Id: 
+			<input id="itemId" />
+			<button type="button" onclick="findItem(); return false;">Find Item</button>
 			<br/><br/><hr/>
+			
 		</div>
-<div id="result"></div>
+<div id="itemData"></div>
+
 </body>
 </html>

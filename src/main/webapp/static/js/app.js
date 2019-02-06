@@ -65,8 +65,7 @@ hideAllPanels = function() {
 
 //Demo of Inputting text
 greetUser = function() {
-	var s = document.getElementById('userName').value;
-	document.getElementById('message').innerHTML = "Hello " + s;
+	document.getElementById('list-panel').innerHTML = items()
 }
 
 //rest1, rest2 = Demos of calling REST interfaces
@@ -124,9 +123,9 @@ restPathParam = function() {
 
 //Demo of receiving data from REST interface - AS A JSON OBJECT
 getAsJson = function() {
-	var eeNum= document.getElementById('eeNum2').value;
+	var eeNum= document.getElementById('itemId').value;
 	const Http = new XMLHttpRequest();
-	const url= 'http:rest/employee/' + eeNum;
+	const url= 'http:rest/library/item' + eeNum;
 	document.getElementById('eeJsonUri').innerHTML = 'GET &nbsp;' + url;
 	Http.open("GET", url);
 	Http.send();
@@ -134,16 +133,25 @@ getAsJson = function() {
 		if (Http.readyState == 4) {
 			if (Http.status == 200) {
 				var ee = JSON.parse(Http.responseText);
-				console.log("name= "+ ee.name);
-				document.getElementById('ee2Name').innerHTML = ee.name;
-				document.getElementById('ee2Office').innerHTML = ee.office;
-				document.getElementById('ee2Salary').innerHTML = ee.salary;
+				document.write
 				showMsg("GET succeeded")
 			}
 			else {
 				showMsg( 'ERROR: ' + Http.status + ' ('+Http.statusText+')' );
 			}
 		}
+	}
+}
+
+findItem = function(){
+	console.log("finditem");
+	var itemId=document.getElementById('itemId').value;
+	var url = 'http:rest/library/item/'+ itemId + '/name';
+	Http.open("GET", url)
+	document.getElementById('itemData').innerHTML = Http.status;
+	Http.send();
+	Http.onreadystatechange=(e) => {
+		document.getElementById('itemData').innerHTML = Http.responseText;
 	}
 }
 
@@ -171,22 +179,22 @@ editHttpStateChangeHandler = function(e) {
 }
 
 //Constructor function
-function Employee (id, name, office, salary) { 
+function Book (isbn, title,author) { 
 	this.id = id;
 	this.name = name;
 	this.office = office;
 	this.salary = salary;
 }
 
-createEmployee_ee3 = function() {
+createBook_ee3 = function() {
 	var eeNum = document.getElementById('ee3Id').value;
 	if (eeNum == '') {
 		eeNum= 0;	// POST (and others?) need an int here, for when Jackson creates Employee DTO to pass into REST handler
 	}
-	var name = document.getElementById('ee3Name').value;
-	var office = document.getElementById('ee3Office').value;
-	var salary = document.getElementById('ee3Salary').value;
-	var emp = new Employee( eeNum, name, office, salary );
+	var title = document.getElementById('title').value;
+	var authro = document.getElementById('author').value;
+	var isbn = document.getElementById('isbn').value;
+	var emp = new Book(isbn, title, isbn );
 	return emp;
 }
 
@@ -219,7 +227,7 @@ editUpdateEmp= function() {
 //Demo of POST (create an Employee)
 editCreateEmp = function() {
 	var emp = createEmployee_ee3();	// Create from emp3* fields
-	const url= 'http:rest/employee/';
+	const url= 'http:rest/book/';
 	const Http = new XMLHttpRequest();
 	document.getElementById('eeEditUri').innerHTML = 'POST &nbsp;' + url;
 	Http.open("POST", url, true);
