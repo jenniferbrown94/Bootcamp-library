@@ -9,11 +9,11 @@ public class Item {
 	private Person borrower;
 	private Person reserver;
 	private LocalDate dueDate;
-	
+
 	public Item(String name) {
 		this.name = name;
 	}
-	
+
 	public boolean borrow(Person borrower) {
 		if (borrower == null) {
 			boolean success = borrower.addOnLoanItem(this);
@@ -22,26 +22,23 @@ public class Item {
 				LocalDate today = LocalDate.now();
 				this.dueDate = today.plus(2, ChronoUnit.WEEKS);
 				return true;
-			}
-			else {
+			} else {
 				return false;
 			}
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	
-	public boolean reserve (Person reserver) {
+
+	public boolean reserve(Person reserver) {
 		if (borrower != null && reserver == null) {
 			this.reserver = reserver;
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	public boolean returnItem() {
 		boolean result = false;
 		if (borrower != null) {
@@ -49,9 +46,8 @@ public class Item {
 			if (success) {
 				if (reserver != null) {
 					this.borrower = this.reserver;
-			
-				}
-				else {
+
+				} else {
 					this.borrower = null;
 				}
 				result = true;
@@ -60,5 +56,8 @@ public class Item {
 		return result;
 	}
 	
-	
+	public String toString() {
+		return name;
+	}
+
 }

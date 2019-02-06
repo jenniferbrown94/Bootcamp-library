@@ -5,14 +5,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
 @Path("/msg2")
 public class RestService2 {
-	
-	 @GET
-	    @Produces(MediaType.TEXT_PLAIN)
-	    public String getMessage() {
-	        return "My message hello\n";
-	    }
+
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getMessage() {
+		return "My message hello\n";
+	}
 
 }
