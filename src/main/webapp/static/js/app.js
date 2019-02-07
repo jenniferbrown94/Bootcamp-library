@@ -159,17 +159,47 @@ findItem = function(){
 findCustomer = function(){
 	const Http = new XMLHttpRequest();
 	var customerId=document.getElementById('idnumber').value;
+	var customerName = document.getElementById("name").value;
 	var url = 'http:rest/library/customer/' + customerId;
 	Http.open("GET", url)
 	document.getElementById('name').innerHTML = Http.status;
 	Http.send();
 	Http.onreadystatechange=(e) => {
 		if( Http.status==200){
-			window.location.href = "customer.html";
+			window.location.replace("customer.html");
 		}
 		else {
-			document.getElementById('existingerror').innerHTML = "You not yet a customer please enter your name and age";
+			document.getElementById('existingerror').innerHTML = "You not yet a customer please enter your name and age in the form to the left";
 		}
+	}
+}
+
+newCustomer = function(){
+	const Http = new XMLHttpRequest();
+	var customerName=document.getElementById('name').value;
+	var customerAge=document.getElementById('age').value;
+	var url = 'http:rest/library/newcustomer/' + customerName + '/' + customerAge;
+	Http.open("GET", url)
+	document.getElementById('name').innerHTML = Http.status;
+	Http.send();
+	Http.onreadystatechange=(e) => {
+		if( Http.status==200){
+			window.location.replace("customer.html");
+		}
+		else {
+			document.getElementById('existingerrornew').innerHTML = "Customer creation failed";
+		}
+	}
+}
+
+getId = function(){
+	const Http = new XMLHttpRequest();
+	var url = 'http:rest/library/customer/getid';
+	Http.open("GET", url)
+	document.getElementById('name').innerHTML = Http.status;
+	Http.send();
+	Http.onreadystatechange=(e) => {
+		document.getElementById("customerDetails").innerHTML = Http.responseText;
 	}
 }
 
@@ -197,23 +227,16 @@ editHttpStateChangeHandler = function(e) {
 }
 
 //Constructor function
-function Book (isbn, title,author) { 
-	this.id = id;
+function customer (name, age) { 
 	this.name = name;
-	this.office = office;
-	this.salary = salary;
+	this.age = age;
 }
 
-createBook_ee3 = function() {
-	var eeNum = document.getElementById('ee3Id').value;
-	if (eeNum == '') {
-		eeNum= 0;	// POST (and others?) need an int here, for when Jackson creates Employee DTO to pass into REST handler
-	}
-	var title = document.getElementById('title').value;
-	var authro = document.getElementById('author').value;
-	var isbn = document.getElementById('isbn').value;
-	var emp = new Book(isbn, title, isbn );
-	return emp;
+createCustomer = function() {
+	var name = document.getElementById('name').value;
+	var age = document.getElementById('age').value;
+	var customer = new customer(name, age);
+	return customer;
 }
 
 //Read JSON. As per earlier `getAsJson` demo, but factored out the readystatechange handler and object display
@@ -244,8 +267,8 @@ editUpdateEmp= function() {
 
 //Demo of POST (create an Employee)
 editCreateEmp = function() {
-	var emp = createEmployee_ee3();	// Create from emp3* fields
-	const url= 'http:rest/book/';
+	var emp = createCustomer();	// Create from emp3* fields
+	const url= 'http:rest/library/customer';
 	const Http = new XMLHttpRequest();
 	document.getElementById('eeEditUri').innerHTML = 'POST &nbsp;' + url;
 	Http.open("POST", url, true);

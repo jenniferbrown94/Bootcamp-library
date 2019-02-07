@@ -2,12 +2,14 @@ package informed.dev.rest;
 
 import java.util.ArrayList;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 
 import informed.dev.Classes.*;
@@ -52,7 +54,7 @@ public class RestService {
 		
 		if (customers == null ) {
 			customers = new ArrayList<Person>();
-			Person hope = new Person("Hope Bristow", 24, 1);
+			Person hope = new Customer("Hope Bristow", 24, 1);
 			customers.add(hope);
 		}
 	}
@@ -102,4 +104,29 @@ public class RestService {
 			return ret;
 		}
 	}
+	
+	@GET
+	@Path("newcustomer/{name}/{age}")
+	@Produces( {MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON} )
+	public Person produceJSONNewCustomer( @PathParam("name") String name, @PathParam("age") String age ) {
+		initLib();
+		int id = customers.size()+1;
+		System.out.println( "In produceJSON() for new id= "+ id);
+		Person ret = null;
+			int age2 = Integer.parseInt(age);
+			ret = new Customer(name, age2, id);	
+			currentCustomer = ret;
+			customers.add(ret);
+			return ret;
+	}
+	
+	@GET
+	@Path("customer/getid")
+	@Produces( {MediaType.TEXT_PLAIN} )
+	public String getId() {
+		initLib();
+		int id = currentCustomer.getId();
+		String name = currentCustomer.getName();
+	}
+	
 }

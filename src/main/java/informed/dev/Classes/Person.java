@@ -49,5 +49,17 @@ public class Person {
 		}
 		return freeSpace;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getId() {
+		return this.idNumber;
+	}
+	
+	public int getAge() {
+		return this.age;
+	}
 
 }
