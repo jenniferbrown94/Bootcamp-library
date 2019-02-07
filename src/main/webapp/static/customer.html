@@ -123,16 +123,12 @@
        <h2 align="center">Your profile</h2>	
        <div class="p-5 bg-white">
           <img src="images/profile.jpg" alt="Image" width="200px">
-
-			<p id='name'></p> 
+         <br/><br/>
+			<p id='name'></p>
 			<p id='age'></p> 
-			<p id='idno'></p>
-		</form>	
-
-			
+			<p id='idno'></p>	
 		</div>	
-
-        </div>
+		</div>
       
     
        <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
@@ -143,13 +139,26 @@
 			<input id="itemId" />
 			<button type="button" onclick="findItem();">Find Item</button>
 			<br/><br/><hr/>
+
 		</div>
-			<div id="itemData"></div>
+			<div id="itemData"></div><br/>
 			<div id='options'><button id="borrow" style="display:none">Borrow</button></div>
+			<br/><hr/>
+			<div>
+			
+			<input type="submit" value="Look at all items in the library" class="btn btn-primary py-2 px-4 text-white" onclick="showitems();"><br/><br/>
+			<div id="items-list"></div>
 		</div>	
+
+			</div>
         </div>
+
+
+         </div>
       </div>
     </div>
+   </div>
+  
 
    <div class="site-section block-13 bg-light">
 
@@ -163,16 +172,12 @@
               <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
             </div>
             <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    
             </p>
           </div>        
         </div>
     </footer>
   </div>
-
-  
     
   </body>
 </html>

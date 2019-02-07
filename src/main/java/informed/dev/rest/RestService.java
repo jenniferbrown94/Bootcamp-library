@@ -1,6 +1,7 @@
 package informed.dev.rest;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -141,6 +142,19 @@ public class RestService {
 	public Person getId() {
 		initLib();
 		return currentCustomer;
+	}
+	
+	@GET
+	@Path("showitems")
+	@Produces( {MediaType.TEXT_PLAIN})
+	public String showItems() {
+		String items = "";
+		Iterator<Item> iterator = lib.iterator();
+		while (iterator.hasNext()) {
+		    String row = iterator.next().getName();
+		    items += row + "<br>";
+		}
+		return items;
 	}
 	
 }
