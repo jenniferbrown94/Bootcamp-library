@@ -78,12 +78,13 @@ public class RestService {
 	// eg browse to http://localhost:7070/rest/employee/3/name
 	public String getItemName(@PathParam("id") String id) {
 		initLib();
+	
 		try {
 			int num= Integer.parseInt(id);
 			return lib.get(num - 1).getName();	// Emp id is 1-based
 		}
-		catch (Exception ex) {
-			return "Error getting item name with id: " + id + " : " + ex;
+		catch (IndexOutOfBoundsException swallow) {
+			return "error";
 		}
 	}
 	

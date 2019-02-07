@@ -148,12 +148,15 @@ findItem = function(){
 	console.log("finditem");
 	const Http = new XMLHttpRequest();
 	var itemId=document.getElementById('itemId').value;
-	var url = 'http:rest/library/item/'+ itemId + '/name';
+	var url = 'http:rest/library/item/'+ itemId;
 	Http.open("GET", url)
 	document.getElementById('itemData').innerHTML = Http.status;
 	Http.send();
 	Http.onreadystatechange=(e) => {
-		document.getElementById('itemData').innerHTML = Http.responseText;
+		if (Http.status==200){
+			console.log(Http.response);
+			document.getElementById('itemData').innerHTML = JSON.parse(Http.response).name;
+		}
 	}
 }
 
