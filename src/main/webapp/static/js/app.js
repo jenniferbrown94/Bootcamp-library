@@ -168,7 +168,7 @@ findCustomer = function(){
 			window.location.href = "customer.html";
 		}
 		else {
-			document.getElementById('existingerror').innerHTML = "You not yet a customer please enter your name and age";
+			document.getElementById('existingerror').innerHTML = "You are not yet a customer please sign up with your name and age";
 		}
 	}
 }
