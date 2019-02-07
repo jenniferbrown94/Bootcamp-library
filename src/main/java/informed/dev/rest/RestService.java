@@ -46,7 +46,16 @@ public class RestService {
 			lib.add(new CD("Puppy Love", "Paul Anka", "Pop"));
 			lib.add(new CD("Dogs days are over", "Florence and the Machine", "Pop"));
 			lib.add(new CD("Common people", "Jarvis Cockerspaniel", "Pop"));
+			lib.add(new CD("It's raining dogs", "The Weather Girls", "Pop"));
 
+			
+			lib.add(new Dog("Jasper", "Border Terrier", 2, "meat", 123, "tan"));
+			lib.add(new Dog("Liesl", "German Pointer", 4, "cheese", 124, "brown"));
+			lib.add(new Dog("Rosy", "Labrador", 10, "sausages", 125, "black"));
+			lib.add(new Dog("Bruce", "Bulldog", 5, "meat", 126, "white"));
+			lib.add(new Dog("Truffle", "Cockapoo", 2, "cheese", 127, "brown"));
+			lib.add(new Dog("Lucy", "Labradoodle", 7, "cheese", 128, "Golden"));
+			lib.add(new Dog("Louis", "French bulldog", 4, "sausage", 128, "Blue"));
 
 
 
