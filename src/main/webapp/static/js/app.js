@@ -1,6 +1,7 @@
 
 var nextItemNum = 3;	// For addToList, see later
-var nextEeElt = 1;		// For fetchEmpList / add Employee LI to empList UL
+var nextEeElt = 1;
+var currentCustomer = {};// For fetchEmpList / add Employee LI to empList UL
 
 sayHi = function() {
 	alert('Hello!');
@@ -156,6 +157,7 @@ findItem = function(){
 	}
 }
 
+
 findCustomer = function(){
 	const Http = new XMLHttpRequest();
 	var customerId=document.getElementById('idnumber').value;
@@ -166,7 +168,7 @@ findCustomer = function(){
 	Http.send();
 	Http.onreadystatechange=(e) => {
 		if( Http.status==200){
-			window.location.replace("customer.html");
+			window.location.href="customer.html";
 		}
 		else {
 			document.getElementById('existingerror').innerHTML = "You not yet a customer please enter your name and age in the form to the left";
@@ -174,6 +176,7 @@ findCustomer = function(){
 	}
 }
 
+ 
 newCustomer = function(){
 	const Http = new XMLHttpRequest();
 	var customerName=document.getElementById('name').value;
@@ -184,7 +187,7 @@ newCustomer = function(){
 	Http.send();
 	Http.onreadystatechange=(e) => {
 		if( Http.status==200){
-			window.location.replace("customer.html");
+			window.location.href="customer.html";
 		}
 		else {
 			document.getElementById('existingerrornew').innerHTML = "Customer creation failed";
@@ -192,14 +195,22 @@ newCustomer = function(){
 	}
 }
 
-getId = function(){
+
+
+getCustomer = function(){
 	const Http = new XMLHttpRequest();
 	var url = 'http:rest/library/customer/getid';
 	Http.open("GET", url)
 	document.getElementById('name').innerHTML = Http.status;
 	Http.send();
 	Http.onreadystatechange=(e) => {
-		document.getElementById("customerDetails").innerHTML = Http.responseText;
+		if( Http.status==200){
+			currentCustomer=JSON.parse(Http.response);
+			console.log(currentCustomer);
+			document.getElementById('age').innerHTML ="Age: " + currentCustomer.age;
+			document.getElementById('name').innerHTML = "Name: " + currentCustomer.name;
+			document.getElementById('idno').innerHTML = "Id: " +currentCustomer.id;
+		}
 	}
 }
 
@@ -227,9 +238,10 @@ editHttpStateChangeHandler = function(e) {
 }
 
 //Constructor function
-function customer (name, age) { 
+function customer (name, age, id) { 
 	this.name = name;
 	this.age = age;
+	this.id = id;
 }
 
 createCustomer = function() {

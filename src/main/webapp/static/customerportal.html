@@ -56,7 +56,7 @@
                   <a href="index.html">Home</a>
                 </li>
                 <li class="has-children">
-                  <a href="destination.html">Users</a>
+                 <a href="#">Users</a>
                   <ul class="dropdown">
                     <li><a href="customerportal.html">Customer</a></li>
                     <li><a href="librarianportal.html">Librarian</a></li>
@@ -97,18 +97,6 @@
       </div>
       
     </header>
-
-    <div class="site-blocks-cover inner-page-cover" style="background-image: url(images/dogbook1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-          <div class="row align-items-center justify-content-center text-center">
-
-            <div class="col-md-8" data-aos="fade-up" data-aos-delay="400">
-              <h1 class="text-white font-weight-light">Customers</h1>
-            </div>
-          </div>
-        </div>
-      </div>    
-    </div>
     
  <div class="site-section bg-light">
    <div class="container">
@@ -118,7 +106,7 @@
 		 <form action="#" class="p-5 bg-white">        
 		     <div class="row form-group">
 		       <div class="col-md-6 mb-3 mb-md-0">
-		         <label class="text-black" for="Name"></label>
+		         <label class="text-black" for="Name">Name</label>
 		         <input type="text" id="name" class="form-control">
 		       </div>
 		       <div class="col-md-6">
@@ -142,7 +130,7 @@
             <form action="#" class="p-5 bg-white">        
 		     <div class="row form-group">
 		       <div class="col-md-6 mb-3 mb-md-0">
-		         <label class="text-black" for="Name"></label>
+		         <label class="text-black" for="Name">Name</label>
 		         <input type="text" id="name" class="form-control">
 		       </div>
 		       <div class="col-md-6">
@@ -150,7 +138,9 @@
 		         <input type="text" id="idnumber" class="form-control">
 		       </div>
 		     </div>
-		     
+		     <div id="existingerror" style="color:red">
+
+          </div>
 		     <div class="row form-group">
 		       <div class="col-md-12">
 		         <input type="submit" value="Sign in" class="btn btn-primary py-2 px-4 text-white" onclick="findCustomer();">
@@ -159,9 +149,7 @@
 		
 		 
 		</form>
-		<div id="existingerror"></div>
-
-          </div>
+		
         </div>
       </div>
     </div>

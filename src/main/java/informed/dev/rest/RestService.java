@@ -122,11 +122,10 @@ public class RestService {
 	
 	@GET
 	@Path("customer/getid")
-	@Produces( {MediaType.TEXT_PLAIN} )
-	public String getId() {
+	@Produces( {MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON} )
+	public Person getId() {
 		initLib();
-		int id = currentCustomer.getId();
-		String name = currentCustomer.getName();
+		return currentCustomer;
 	}
 	
 }
