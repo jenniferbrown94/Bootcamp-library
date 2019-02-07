@@ -210,9 +210,9 @@ getCustomer = function(){
 		if( Http.status==200){
 			currentCustomer=JSON.parse(Http.response);
 			console.log(currentCustomer);
-			document.getElementById('age').innerHTML ="Age: " + currentCustomer.age;
-			document.getElementById('name').innerHTML = "Name: " + currentCustomer.name;
-			document.getElementById('idno').innerHTML = "Id: " +currentCustomer.id;
+			document.getElementById('age').innerHTML = "<span class='mybold'>Age: </span>" + currentCustomer.age;
+			document.getElementById('name').innerHTML = "<span class='mybold'> Name: </span>" + currentCustomer.name;
+			document.getElementById('idno').innerHTML = "<span class='mybold'>Id: </span>" +currentCustomer.id;
 		}
 	}
 }
@@ -324,5 +324,15 @@ fetchEmpList = function() {
 				showMsg( 'ERROR: ' + Http.status + ' ('+Http.statusText+')' );
 			}
 		}
+	}
+}
+
+showitems=function(){
+	const Http = new XMLHttpRequest();
+	var url = 'http:rest/library/showitems';
+	Http.open("GET", url)
+	Http.send();
+	Http.onreadystatechange=(e) => {
+		document.getElementById("items-list").innerHTML= Http.responseText;
 	}
 }
