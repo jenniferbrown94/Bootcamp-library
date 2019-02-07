@@ -17,6 +17,7 @@ public class RestService {
 	
 	static ArrayList<Item> lib = null;
 	static ArrayList<Person> customers = null;
+	static Person currentCustomer = null;
 	
 	private static void initLib() {
 		if (lib == null) {
@@ -55,6 +56,24 @@ public class RestService {
 		}
 		catch (Exception ex) {
 			return "Error getting item name with id: " + id + " : " + ex;
+		}
+	}
+	
+	@GET
+	@Path("customer/{id}")
+	@Produces( {MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON} )
+	public Person produceJSONCustomer( @PathParam("id") String id ) {
+		System.out.println( "In produceJSON() for id= "+ id);
+		initLib();
+		Person ret = null;
+		try {
+			int num= Integer.parseInt(id);
+			ret = customers.get(num - 1);	
+			currentCustomer = ret;
+			return ret;
+		}
+		catch (IndexOutOfBoundsException e) {
+			return ret;
 		}
 	}
 }

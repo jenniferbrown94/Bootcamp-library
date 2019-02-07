@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <script src="js/app.js"></script>
     <title>The Dog Library</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta ="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -117,7 +118,7 @@
 		 <form action="#" class="p-5 bg-white">        
 		     <div class="row form-group">
 		       <div class="col-md-6 mb-3 mb-md-0">
-		         <label class="text-black" for="name">Name</label>
+		         <label class="text-black" for="Name"></label>
 		         <input type="text" id="name" class="form-control">
 		       </div>
 		       <div class="col-md-6">
@@ -140,7 +141,7 @@
             <form action="#" class="p-5 bg-white">        
 		     <div class="row form-group">
 		       <div class="col-md-6 mb-3 mb-md-0">
-		         <label class="text-black" for="name">Name</label>
+		         <label class="text-black" for="Name"></label>
 		         <input type="text" id="name" class="form-control">
 		       </div>
 		       <div class="col-md-6">
@@ -151,12 +152,13 @@
 		     
 		     <div class="row form-group">
 		       <div class="col-md-12">
-		         <input type="submit" value="Sign in" class="btn btn-primary py-2 px-4 text-white">
+		         <input type="submit" value="Sign in" class="btn btn-primary py-2 px-4 text-white" onclick="findCustomer();">
 		       </div>
 		     </div>
 		
 		 
 		</form>
+		<div id="existingerror"></div>
 
           </div>
         </div>

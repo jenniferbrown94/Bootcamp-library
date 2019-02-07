@@ -145,6 +145,7 @@ getAsJson = function() {
 
 findItem = function(){
 	console.log("finditem");
+	const Http = new XMLHttpRequest();
 	var itemId=document.getElementById('itemId').value;
 	var url = 'http:rest/library/item/'+ itemId + '/name';
 	Http.open("GET", url)
@@ -152,6 +153,23 @@ findItem = function(){
 	Http.send();
 	Http.onreadystatechange=(e) => {
 		document.getElementById('itemData').innerHTML = Http.responseText;
+	}
+}
+
+findCustomer = function(){
+	const Http = new XMLHttpRequest();
+	var customerId=document.getElementById('idnumber').value;
+	var url = 'http:rest/library/customer/' + customerId;
+	Http.open("GET", url)
+	document.getElementById('name').innerHTML = Http.status;
+	Http.send();
+	Http.onreadystatechange=(e) => {
+		if( Http.status==200){
+			window.location.href = "customer.html";
+		}
+		else {
+			document.getElementById('existingerror').innerHTML = "You not yet a customer please enter your name and age";
+		}
 	}
 }
 
