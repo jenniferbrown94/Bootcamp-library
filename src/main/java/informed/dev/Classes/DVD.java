@@ -5,8 +5,8 @@ public class DVD extends Item {
 	private String genre;
 	private int runTime;
 	
-	public DVD(String name, String director, String genre, int runTime) {
-		super(name);
+	public DVD(String name, String director, String genre, int runTime, int id) {
+		super(name, id);
 		this.director = director;
 		this.genre = genre;
 		this.runTime = runTime;

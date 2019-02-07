@@ -9,9 +9,16 @@ public class Item {
 	private Person borrower;
 	private Person reserver;
 	private LocalDate dueDate;
+	private int id;
+	private boolean onLoan;
 
-	public Item(String name) {
+	public Item(String name, int id) {
 		this.name = name;
+		this.id = id;
+		this.borrower = null;
+		this.reserver = null;
+		this.dueDate = null;
+		this.onLoan = false;
 	}
 
 	public boolean borrow(Person borrower) {
@@ -21,6 +28,7 @@ public class Item {
 				this.borrower = borrower;
 				LocalDate today = LocalDate.now();
 				this.dueDate = today.plus(2, ChronoUnit.WEEKS);
+				this.onLoan=true;
 				return true;
 			} else {
 				return false;
@@ -45,7 +53,7 @@ public class Item {
 			boolean success = borrower.removeOnLoanItem(this);
 			if (success) {
 				if (reserver != null) {
-					this.borrower = this.reserver;
+					this.borrow(reserver);
 
 				} else {
 					this.borrower = null;
@@ -63,5 +71,6 @@ public class Item {
 	public String getName() {
 		return name;
 	}
+	
 
 }

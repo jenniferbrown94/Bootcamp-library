@@ -146,6 +146,7 @@ getAsJson = function() {
 
 findItem = function(){
 	console.log("finditem");
+	document.getElementById('borrow').style.display = "none";
 	const Http = new XMLHttpRequest();
 	var itemId=document.getElementById('itemId').value;
 	var url = 'http:rest/library/item/'+ itemId;
@@ -154,8 +155,18 @@ findItem = function(){
 	Http.send();
 	Http.onreadystatechange=(e) => {
 		if (Http.status==200){
+			var item = JSON.parse(Http.response)
+			document.getElementById('itemData').innerHTML = item.name ;
 			console.log(Http.response);
-			document.getElementById('itemData').innerHTML = JSON.parse(Http.response).name;
+			if (item.borrower == undefined){
+				document.getElementById('borrow').style.display = "block";
+			}
+			else {
+				document.getElementById('options').innerHtml = "This item is already on loan";
+			}
+		}
+		else if (Http.status==204){
+			document.getElementById('itemData').innerHTML = "Item not found";
 		}
 	}
 }
@@ -201,6 +212,7 @@ newCustomer = function(){
 
 
 getCustomer = function(){
+	document.getElementById('borrow').style.display = "none"
 	const Http = new XMLHttpRequest();
 	var url = 'http:rest/library/customer/getid';
 	Http.open("GET", url)

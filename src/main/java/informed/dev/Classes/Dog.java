@@ -7,8 +7,8 @@ public class Dog extends Item {
 	private int microchipNumber;
 	private String colour;
 	
-	public Dog(String name, String breed, int age, String food, int microchipNumber, String colour){
-		super(name);
+	public Dog(String name, String breed, int age, String food, int microchipNumber, String colour, int id){
+		super(name, id);
 		this.breed = breed;
 		this.age = age;
 		this.food = food;
