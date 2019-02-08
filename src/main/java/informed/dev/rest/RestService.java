@@ -155,12 +155,12 @@ public class RestService {
            while (iterator.hasNext()) {
         	   Item row = iterator.next();
         	   if (row.getType().equalsIgnoreCase(type)) {
-             	  items += "<span class='mybold'>" + row.getName() + "</span>" + "-";
+             	  items += row.getName();
              	  if (row.getType().equalsIgnoreCase("book")){
-             		  items+=((Book) row).getAuthor() + "<br/> <br/>";
+             		  items+=" -" + "<span class='mybold'>" + ((Book) row).getAuthor() + "</span> <br/>";
              	  }
         		   if (!row.isOnLoan()) {
-        			   items += "<br/>   <button id='"+row.getId() +"' onclick='borrow(id);'>Borrow</button><br/><hr>";
+        			   items += "<br/>   <button style='color:salmon;' id='"+row.getId() +"' onclick='borrow(id);'>Borrow</button><br/><hr>";
         		   }
         		   else {
         			   items += "<br/><hr>";
