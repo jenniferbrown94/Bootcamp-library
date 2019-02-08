@@ -72,5 +72,17 @@ public class Item {
 		return name;
 	}
 	
+	public boolean isOnLoan() {
+		return onLoan;
+	}
+	
+	public boolean isReserved() {
+		boolean isRes = false;
+		if (reserver != null) {
+			isRes=true;
+		}
+		return isRes;
+	}
+	
 
 }

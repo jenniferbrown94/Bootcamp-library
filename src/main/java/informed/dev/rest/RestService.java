@@ -27,6 +27,7 @@ public class RestService {
 			customers = new ArrayList<Person>();
 			Person hope = new Customer("Hope Bristow", 24, 1);
 			customers.add(hope);
+		
 			
 			
 			lib = new ArrayList<Item>();
@@ -151,8 +152,15 @@ public class RestService {
 		String items = "";
 		Iterator<Item> iterator = lib.iterator();
 		while (iterator.hasNext()) {
-		    String row = iterator.next().getName();
-		    items += row + "<br>";
+			Item row = iterator.next();
+		    items += row.getName() + "<br>";
+		    if (!row.isOnLoan()) {
+		    	items += "<button id='borrow'>Borrow</button>";
+		    }
+		    else if(!row.isReserved()){
+		    	items += "<button id='reserve'>Reserve</button>";
+		    	
+		    }
 		}
 		return items;
 	}

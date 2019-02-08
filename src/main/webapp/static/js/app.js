@@ -157,12 +157,6 @@ findItem = function(){
 		if (Http.status==200){
 			var item = JSON.parse(Http.response)
 			document.getElementById('itemData').innerHTML = item.name;
-			if (item.borrower == undefined){
-				document.getElementById('borrow').style.display = "block";
-			}
-			else {
-				document.getElementById('options').innerHtml = "This item is already on loan";
-			}
 		}
 		else if (Http.status==204){
 			document.getElementById('itemData').innerHTML = "Item not found";
@@ -243,7 +237,7 @@ editHttpStateChangeHandler = function(e) {
 	if (Http.readyState == 4) {
 		if (Http.status == 200) {
 			displayEee3(JSON.parse(Http.responseText));	// Display the returned Employee onto ee3* fields
-			showMsg('http request succeeded'); // Cant determine which http verb from e or Http
+			showMsg('http request succeeded'); // Can't determine which http verb from e or Http
 		}
 		else {
 			showMsg( 'ERROR: ' + Http.status + ' ('+Http.statusText+')' );
