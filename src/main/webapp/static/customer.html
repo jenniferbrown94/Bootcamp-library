@@ -46,8 +46,7 @@
   <body onload='getCustomer();'>
 
   
-  <div class="site-wrap">
-
+<div class="site-wrap">
     <div class="site-mobile-menu">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -102,7 +101,6 @@
                 <li>
                   <img src="images/dogicon.png" width="30px">
                 </li>
-                
               </ul>
             </div>
 
@@ -116,63 +114,55 @@
     </header>
     
     
- <div class="site-section bg-light">
-   <div class="container">
-     <div class="row">
-       <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
-       <h2 align="center">Your profile</h2>	
-       <div class="p-5 bg-white">
-          <img src="images/profile.jpg" alt="Image" width="200px">
-         <br/><br/>
-			<p id='name'></p>
-			<p id='age'></p> 
-			<p id='idno'></p>	
-		</div>	
-		</div>
-      
-    
-       <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
-       <h2 align="center">Search</h2>	
-       <div class="p-5 bg-white">
-         
-			
-			<div>
-					<h3>Select the items you wish to browse:</h3> <br/>
+	 <div class="site-section bg-light">
+	   <div class="container">
+	     <div class="row">
+	       <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
+		       <h2 align="center">Your profile</h2>	
+		       <div class="p-5 bg-white">
+		          <img src="images/profile.jpg" alt="Image" width="200px">
+		         <br/><br/>
+					<p style="font-size:20px;" id='name'></p>
+					<p style="font-size:20px;" id='age'></p> 
+					<p style="font-size:20px;" id='idno'></p>
+				   <img src="images/dogicon.png" width="20px" align="right">
+				</div>	
+			</div>
+	      
+	       <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
+	       <h2 align="center">Search</h2>	
+	         <div class="p-5 bg-white">
+	           <div>
+				<p style="font-size:20px;">Select the items you wish to browse:</p>
 					<select id="selecttype">
 					  <option value="Book" id="Books">Books</option>
 					  <option value="Dvd" id="Dvds">DVDs</option>
 					  <option value="Cd" id="Cds">CDs</option>
 					  <option value="Dog" id="Dogs">Dogs</option>
 					</select> <br/><br/>
-					<button onclick="showitems();" class="btn btn-primary py-2 px-4 text-white">View Items</button><br/><br/>
-				
+					<button onclick="showitems();" class="btn btn-primary py-2 px-4 text-white">View Items</button><br/><br/>	
+				</div>
+				<div id="items-list">
+				</div>
+				<br/><hr/>
+			 	<div id="input-panel">
+					<p style="font-size:20px;">Search item by Id: </p>
+					<input id="itemId" />
+					<button type="button" onclick="findItem();">Find Item</button>
+					<br/><br/><hr/>
+				</div>
+				<div id="itemData">
+				</div><br/>
+				<div id='options'>
+				<button id="borrow" style="display:none">Borrow</button>
+				</div>
+				 <img src="images/searchicon.png" width="20px" align="right">
 			</div>
-			<div id="items-list">
-			</div>
-			
-		<br/><hr/>
-		 <div id="input-panel">
-			Search item by Id: 
-			<input id="itemId" />
-			<button type="button" onclick="findItem();">Find Item</button>
-			<br/><br/><hr/>
+		  </div>
 		</div>
-	
-		<div id="itemData"></div><br/>
-			<div id='options'><button id="borrow" style="display:none">Borrow</button></div>
-			<div>
+	</div>
+  </div>
 
-			</div>
-        </div>
-</div>
-
-         </div>
-      </div>
-    </div>
-   </div>
-  
-
-   <div class="site-section block-13 bg-light">
 
    <footer class="site-footer"> 
         <div class="row pt-5 mt-5 text-center">
