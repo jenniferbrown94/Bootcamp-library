@@ -33,7 +33,6 @@ public class RestService {
                   lib = new ArrayList<Item>();
                   lib.add(new Book("Pride and Pedigree", 1, "Jane Austen", "Fiction", 1 ));
           lib.add(new Book("The Dog Encyclopedia for Kids", 2, "Tammy Gagne", "Kids", 2 ));
-          lib.add(new Book("Ultimate Encyclopedia of Dogs, Dog Breeds and Dog Care", 3, "Peter Larkin", "Non fiction", 3 ));
           lib.add(new Book("The Hound of the Baskervilles", 4, "Arthur Canine Doyle", "Fiction", 4 ));
           lib.add(new Book("Harry Potter and the Philospher's Bone", 5, "JK Growling", "Fiction", 5 ));
           lib.add(new Book("To the Dog House", 6, "Virginia Woof", "Fiction", 6 ));
@@ -156,10 +155,12 @@ public class RestService {
                    while (iterator.hasNext()) {
                                   Item row = iterator.next();
                                   if (row.getType().equalsIgnoreCase(type)) {
-                                	  items += row.getName() + "<br>";
+                                	  items += "<span class='mybold'>" + row.getName() + "</span>" + "-";
+                                	  if (row.getType().equalsIgnoreCase("book")){
+                                		  items+=((Book) row).getAuthor() + "<br/> <br/>";
+                                	  }
                                   }
                    }
-                   System.out.println("hi" + items);
                    return items;
     }
 	
