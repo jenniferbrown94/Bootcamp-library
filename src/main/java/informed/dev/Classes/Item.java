@@ -11,18 +11,22 @@ public class Item {
 	private LocalDate dueDate;
 	private int id;
 	private boolean onLoan;
+	private String itemType;
 
-	public Item(String name, int id) {
+	public Item(String name, int id, String itemType) {
 		this.name = name;
 		this.id = id;
 		this.borrower = null;
 		this.reserver = null;
 		this.dueDate = null;
 		this.onLoan = false;
+		this.itemType = itemType;
 	}
 
+	
+
 	public boolean borrow(Person borrower) {
-		if (borrower == null) {
+		if (this.borrower == null) {
 			boolean success = borrower.addOnLoanItem(this);
 			if (success) {
 				this.borrower = borrower;
@@ -72,6 +76,7 @@ public class Item {
 		return name;
 	}
 	
+
 	public boolean isOnLoan() {
 		return onLoan;
 	}
@@ -82,6 +87,11 @@ public class Item {
 			isRes=true;
 		}
 		return isRes;
+	}
+
+	public String getType() {
+		return itemType;
+
 	}
 	
 

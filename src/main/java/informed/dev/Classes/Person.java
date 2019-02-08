@@ -1,15 +1,19 @@
 package informed.dev.Classes;
 
+import java.util.ArrayList;
+
 public class Person {
 	private String name;
 	private int age;
 	private int idNumber;
-	private Item[] onLoanItems = new Item[10];
+	private ArrayList<Item>  onLoanItems= null;
+	private int max = 10;
 
 	public Person(String name, int age, int idNumber) {
 		this.name = name;
 		this.age = age;
 		this.idNumber = idNumber;
+		this.onLoanItems = new ArrayList<Item>();
 	}
 
 	// TODO
@@ -18,37 +22,19 @@ public class Person {
 	}
 
 	public boolean addOnLoanItem(Item borrowing) {
-		int itemSpace = getNextArraySlot();
-		if (itemSpace < 9) {
-			onLoanItems[itemSpace] = borrowing;
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean removeOnLoanItem(Item toReturn) {
 		boolean success = false;
-		for (int i = 0; i < onLoanItems.length; i++) {
-			if (onLoanItems[i].equals(toReturn)) {
-				onLoanItems[i] = null;
-				success = true;
-				break;
-			}
+		if (onLoanItems.size()<max) {
+			onLoanItems.add(borrowing);
+			success = true;
 		}
 		return success;
 	}
-
-	private int getNextArraySlot() {
-		int freeSpace = 10;
-		for (int i = 0; i < onLoanItems.length; i++) {
-			if (onLoanItems[i] == null) {
-				freeSpace = i;
-				break;
-			}
-		}
-		return freeSpace;
+	
+	public boolean removeOnLoanItem(Item borrowing) {
+		onLoanItems.remove(borrowing);
+		return true;
 	}
+		
 	
 	public String getName() {
 		return this.name;

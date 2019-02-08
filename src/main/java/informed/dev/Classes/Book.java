@@ -6,7 +6,7 @@ public class Book extends Item {
 	private String genre;
 	
 	public Book(String name, int ISBN, String author, String genre, int id) {
-		super(name, id);
+		super(name, id, "Book");
 		this.ISBN = ISBN;
 		this.author = author;
 		this.genre = genre;
