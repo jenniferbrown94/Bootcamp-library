@@ -157,7 +157,7 @@ public class RestService {
         	   if (row.getType().equalsIgnoreCase(type)) {
              	  items += row.getName();
              	  if (row.getType().equalsIgnoreCase("book")){
-             		  items+=" -" + "<span class='mybold'>" + ((Book) row).getAuthor() + "</span> <br/>";
+             		  items+=" -" + "<span class='mybold'>" + ((Book) row).getAuthor() + "</span>";
              	  }
         		   if (!row.isOnLoan()) {
         			   items += "<br/>   <button style='color:salmon;' id='"+row.getId() +"' onclick='borrow(id);'>Borrow</button><br/><hr>";
