@@ -11,15 +11,19 @@ public class Item {
 	private LocalDate dueDate;
 	private int id;
 	private boolean onLoan;
+	private String itemType;
 
-	public Item(String name, int id) {
+	public Item(String name, int id, String itemType) {
 		this.name = name;
 		this.id = id;
 		this.borrower = null;
 		this.reserver = null;
 		this.dueDate = null;
 		this.onLoan = false;
+		this.itemType = itemType;
 	}
+
+	
 
 	public boolean borrow(Person borrower) {
 		if (borrower == null) {
@@ -70,6 +74,10 @@ public class Item {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public String getType() {
+		return itemType;
 	}
 	
 

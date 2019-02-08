@@ -339,10 +339,14 @@ fetchEmpList = function() {
 }
 
 showitems=function(){
+	console.log ("hello");
+	var opts=document.getElementById('selecttype');
+	var type=opts.options[opts.selectedIndex].value;
 	const Http = new XMLHttpRequest();
-	var url = 'http:rest/library/showitems';
+	var url = 'http:rest/library/showitems/' + type;
 	Http.open("GET", url)
 	Http.send();
+	console.log(Http.responseText);
 	Http.onreadystatechange=(e) => {
 		document.getElementById("items-list").innerHTML= Http.responseText;
 	}

@@ -134,25 +134,37 @@
        <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
        <h2 align="center">Search</h2>	
        <div class="p-5 bg-white">
-          <div id="input-panel">
-			Id: 
+         
+			
+			<div>
+					<h3>Select the items you wish to browse:</h3> <br/>
+					<select id="selecttype">
+					  <option value="Book" id="Books">Books</option>
+					  <option value="Dvd" id="Dvds">DVDs</option>
+					  <option value="Cd" id="Cds">CDs</option>
+					  <option value="Dog" id="Dogs">Dogs</option>
+					</select> <br/><br/>
+					<button onclick="showitems();" class="btn btn-primary py-2 px-4 text-white">View Items</button><br/><br/>
+				
+			</div>
+			<div id="items-list">
+			</div>
+			
+		<br/><hr/>
+		 <div id="input-panel">
+			Search item by Id: 
 			<input id="itemId" />
 			<button type="button" onclick="findItem();">Find Item</button>
 			<br/><br/><hr/>
-
 		</div>
-			<div id="itemData"></div><br/>
+	
+		<div id="itemData"></div><br/>
 			<div id='options'><button id="borrow" style="display:none">Borrow</button></div>
-			<br/><hr/>
 			<div>
-			
-			<input type="submit" value="Look at all items in the library" class="btn btn-primary py-2 px-4 text-white" onclick="showitems();"><br/><br/>
-			<div id="items-list"></div>
-		</div>	
 
 			</div>
         </div>
-
+</div>
 
          </div>
       </div>

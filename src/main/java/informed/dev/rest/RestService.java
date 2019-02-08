@@ -19,56 +19,59 @@ import informed.dev.Classes.*;
 public class RestService {
 	
 	static ArrayList<Item> lib = null;
-	static ArrayList<Person> customers = null;
-	static Person currentCustomer = null;
-	
-	private static void initLib() {
-		if (lib == null) {
-			customers = new ArrayList<Person>();
-			Person hope = new Customer("Hope Bristow", 24, 1);
-			customers.add(hope);
-			
-			
-			lib = new ArrayList<Item>();
-			lib.add(new Book("Pride and Pedigree", 1, "Jane Austen", "Fiction", 1 ));
-			lib.add(new Book("The Dog Encyclopedia for Kids", 2, "Tammy Gagne", "Kids", 2 ));
-			lib.add(new Book("Ultimate Encyclopedia of Dogs, Dog Breeds and Dog Care", 3, "Peter Larkin", "Non fiction", 3 ));
-			lib.add(new Book("The Hound of the Baskervilles", 4, "Arthur Canine Doyle", "Fiction", 4 ));
-			lib.add(new Book("Harry Potter and the Philospher's Bone", 5, "JK Growling", "Fiction", 5 ));
-			lib.add(new Book("To the Dog House", 6, "Virginia Woof", "Fiction", 6 ));
-			lib.add(new Book("The Adventures of Sherlock Bones", 7, "Arthur Canine Doyle", "Fiction", 7 ));
-			Book b = new Book("Mutt Ado About Nothing", 8, "William Shakespeare", "Fiction", 8);
-			b.borrow(hope);
-			lib.add(b);
+    static ArrayList<Person> customers = null;
+    static Person currentCustomer = null;
+    
+    private static void initLib() {
+       if (lib == null) {
+          customers = new ArrayList<Person>();
+          Person hope = new Customer("Hope Bristow", 24, 1);
+                  customers.add(hope);
+   
+                  
+                  
+                  lib = new ArrayList<Item>();
+                  lib.add(new Book("Pride and Pedigree", 1, "Jane Austen", "Fiction", 1 ));
+          lib.add(new Book("The Dog Encyclopedia for Kids", 2, "Tammy Gagne", "Kids", 2 ));
+          lib.add(new Book("Ultimate Encyclopedia of Dogs, Dog Breeds and Dog Care", 3, "Peter Larkin", "Non fiction", 3 ));
+          lib.add(new Book("The Hound of the Baskervilles", 4, "Arthur Canine Doyle", "Fiction", 4 ));
+          lib.add(new Book("Harry Potter and the Philospher's Bone", 5, "JK Growling", "Fiction", 5 ));
+          lib.add(new Book("To the Dog House", 6, "Virginia Woof", "Fiction", 6 ));
+          lib.add(new Book("The Adventures of Sherlock Bones", 7, "Arthur Canine Doyle", "Fiction", 7 ));
+          Book b = new Book("Mutt Ado About Nothing", 8, "William Shakespeare", "Fiction", 8);
+          b.borrow(hope);
+          lib.add(b);
 
-			lib.add(new DVD("Jurassic Bark", "Steven Spielberg", "Action", 120, 9 ));
-			lib.add(new DVD("Marley and Me", "David Frankel", "Rom Com", 100, 10));
-			lib.add(new DVD("How to train your dog", "Disney", "Kids", 100 , 11));
-			lib.add(new DVD("Cats and dogs", "Lawrence Guterman", "Kids", 100, 12 ));
-			lib.add(new DVD("101 Dalmations", "Stephen Herek", "Kids", 110 , 13));
-			lib.add(new DVD("Reservior Dogs", "Quentin Tarantino", "Action", 130, 14 ));
-			lib.add(new DVD("Mission Inpawsible", "Bruce Geller", "Action", 130 , 15));
-			lib.add(new DVD("Indiana Bones – Raiders of the lost Bark", "Steven Spielberg", "Action", 130, 16 ));
-			
-			lib.add(new CD("Who Let the Dogs Out", "Baha Men", "Pop", 17));
-			lib.add(new CD("Puppy Love", "Paul Anka", "Pop", 18));
-			lib.add(new CD("Dogs days are over", "Florence and the Machine", "Pop", 19));
-			lib.add(new CD("Common people", "Jarvis Cockerspaniel", "Pop", 20));
-			lib.add(new CD("It's raining dogs", "The Weather Girls", "Pop", 21));
+          lib.add(new DVD("Jurassic Bark", "Steven Spielberg", "Action", 120, 9 ));
+          lib.add(new DVD("Marley and Me", "David Frankel", "Rom Com", 100, 10));
+          lib.add(new DVD("How to train your dog", "Disney", "Kids", 100 , 11));
+          lib.add(new DVD("Cats and dogs", "Lawrence Guterman", "Kids", 100, 12 ));
+          lib.add(new DVD("101 Dalmations", "Stephen Herek", "Kids", 110 , 13));
+          lib.add(new DVD("Reservior Dogs", "Quentin Tarantino", "Action", 130, 14 ));
+          lib.add(new DVD("Mission Inpawsible", "Bruce Geller", "Action", 130 , 15));
+          lib.add(new DVD("Indiana Bones – Raiders of the lost Bark", "Steven Spielberg", "Action", 130, 16 ));
+          
+          lib.add(new CD("Who Let the Dogs Out", "Baha Men", "Pop", 17));
+          lib.add(new CD("Puppy Love", "Paul Anka", "Pop", 18));
+          lib.add(new CD("Dogs days are over", "Florence and the Machine", "Pop", 19));
+          lib.add(new CD("Common people", "Jarvis Cockerspaniel", "Pop", 20));
+          lib.add(new CD("It's raining dogs", "The Weather Girls", "Pop", 21));
 
-			
-			lib.add(new Dog("Jasper", "Border Terrier", 2, "meat", 123, "tan", 22));
-			lib.add(new Dog("Liesl", "German Pointer", 4, "cheese", 124, "brown", 23));
-			lib.add(new Dog("Rosy", "Labrador", 10, "sausages", 125, "black", 24));
-			lib.add(new Dog("Bruce", "Bulldog", 5, "meat", 126, "white", 25));
-			lib.add(new Dog("Truffle", "Cockapoo", 2, "cheese", 127, "brown", 26));
-			lib.add(new Dog("Lucy", "Labradoodle", 7, "cheese", 128, "Golden", 27));
-			lib.add(new Dog("Louis", "French bulldog", 4, "sausage", 128, "Blue", 28));
+          
+          lib.add(new Dog("Jasper", "Border Terrier", 2, "meat", 123, "tan", 22));
+          lib.add(new Dog("Liesl", "German Pointer", 4, "cheese", 124, "brown", 23));
+          lib.add(new Dog("Rosy", "Labrador", 10, "sausages", 125, "black", 24));
+          lib.add(new Dog("Bruce", "Bulldog", 5, "meat", 126, "white", 25));
+          lib.add(new Dog("Truffle", "Cockapoo", 2, "cheese", 127, "brown", 26));
+          lib.add(new Dog("Lucy", "Labradoodle", 7, "cheese", 128, "Golden", 27));
+          lib.add(new Dog("Louis", "French bulldog", 4, "sausage", 128, "Blue", 28));
 
 
-		}
-		
-	}
+       }
+       
+    }
+
+
 	
 	@GET
 	@Path("item/{id}")
@@ -145,16 +148,19 @@ public class RestService {
 	}
 	
 	@GET
-	@Path("showitems")
-	@Produces( {MediaType.TEXT_PLAIN})
-	public String showItems() {
-		String items = "";
-		Iterator<Item> iterator = lib.iterator();
-		while (iterator.hasNext()) {
-		    String row = iterator.next().getName();
-		    items += row + "<br>";
-		}
-		return items;
-	}
+    @Path("showitems/{type}")
+    @Produces( {MediaType.TEXT_PLAIN})
+    public String showItems(@PathParam("type") String type) {
+                   String items = "";
+                   Iterator<Item> iterator = lib.iterator();
+                   while (iterator.hasNext()) {
+                                  Item row = iterator.next();
+                                  if (row.getType().equalsIgnoreCase(type)) {
+                                	  items += row.getName() + "<br>";
+                                  }
+                   }
+                   System.out.println("hi" + items);
+                   return items;
+    }
 	
-}
+	}
