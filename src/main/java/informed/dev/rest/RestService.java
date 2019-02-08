@@ -39,9 +39,7 @@ public class RestService {
           lib.add(new Book("To the Dog House", 6, "Virginia Woof", "Fiction", 6 ));
           lib.add(new Book("The Adventures of Sherlock Bones", 7, "Arthur Canine Doyle", "Fiction", 7 ));
           Book b = new Book("Mutt Ado About Nothing", 8, "William Shakespeare", "Fiction", 8);
-          System.out.println(b.borrow(hope));
           lib.add(b);
-          System.out.println(b.isOnLoan());
 
           lib.add(new DVD("Jurassic Bark", "Steven Spielberg", "Action", 120, 9 ));
           lib.add(new DVD("Marley and Me", "David Frankel", "Rom Com", 100, 10));
@@ -160,16 +158,34 @@ public class RestService {
         	   if (row.getType().equalsIgnoreCase(type)) {
         		   items += row.getName();
         		   if (!row.isOnLoan()) {
-        			   items += "   <button id='borrow'>Borrow</button><br/><hr>";
+        			   items += "   <button id='"+row.getId() +"' onclick='borrow(id);'>Borrow</button><br/><hr>";
         		   }
         		   else {
-        			   items += "<br/>";
+        			   items += "<br/><hr>";
         		   }
 
                }
            }
            return items;
     }
+	
+	@GET
+	@Path("borrow/{id}")
+	@Produces({MediaType.TEXT_PLAIN})
+	public String borrow(@PathParam("id") String id) {
+		Item ret; 
+		String response = "failure";
+		if (currentCustomer!=null) {
+			int num= Integer.parseInt(id);
+			ret = lib.get(num - 1);	
+			boolean result = ret.borrow(currentCustomer);
+			if (result) {
+				response = "success";
+			}
+		}
+		return response;
+	}
+	
 
 	
 }

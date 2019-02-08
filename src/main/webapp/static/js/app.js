@@ -213,7 +213,6 @@ getCustomer = function(){
 	Http.onreadystatechange=(e) => {
 		if( Http.status==200){
 			currentCustomer=JSON.parse(Http.response);
-			console.log(currentCustomer);
 			document.getElementById('age').innerHTML = "<span class='mybold'>Age: </span>" + currentCustomer.age;
 			document.getElementById('name').innerHTML = "<span class='mybold'> Name: </span>" + currentCustomer.name;
 			document.getElementById('idno').innerHTML = "<span class='mybold'>Id: </span>" +currentCustomer.id;
@@ -332,15 +331,30 @@ fetchEmpList = function() {
 }
 
 showitems=function(){
-	console.log ("hello");
 	var opts=document.getElementById('selecttype');
 	var type=opts.options[opts.selectedIndex].value;
 	const Http = new XMLHttpRequest();
 	var url = 'http:rest/library/showitems/' + type;
 	Http.open("GET", url)
 	Http.send();
-	console.log(Http.responseText);
 	Http.onreadystatechange=(e) => {
 		document.getElementById("items-list").innerHTML= Http.responseText;
+	}
+}
+
+borrow = function(id){
+	const Http = new XMLHttpRequest();
+	var url = 'http:rest/library/borrow/' + id;
+	Http.open("GET", url);
+	Http.send();
+	Http.onreadystatechange=(e) => {
+		if(Http.responseText == "success"){
+			var innerh = document.getElementById('id').innerHTML;
+			document.getElementById('books').innerHTML = "You have borrowed "+innerh;
+		}
+		else{
+			document.getElementById('books').innerHTML = "Borrow unsuccessful";
+		}
+		showitems();
 	}
 }
