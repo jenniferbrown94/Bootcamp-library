@@ -155,7 +155,7 @@ public class RestService {
            while (iterator.hasNext()) {
         	   Item row = iterator.next();
         	   if (row.getType().equalsIgnoreCase(type)) {
-             	  items += "<span class='mybold'>" + row.getName() + "</span>" + "-";
+             	  items += "<span class='mybold' >" + row.getName() + "</span>" + "-";
              	  if (row.getType().equalsIgnoreCase("book")){
              		  items+=((Book) row).getAuthor() + "<br/> <br/>";
              	  }

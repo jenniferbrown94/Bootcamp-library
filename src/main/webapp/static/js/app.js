@@ -342,19 +342,22 @@ showitems=function(){
 	}
 }
 
+getName = function(id){
+	const Http = new XMLHttpRequest();
+	var url = 'http:rest/library/item/' + id +"/name";
+	Http.open("GET", url);
+	Http.send();
+		return Http.responseText;
+}
+
 borrow = function(id){
 	const Http = new XMLHttpRequest();
 	var url = 'http:rest/library/borrow/' + id;
 	Http.open("GET", url);
 	Http.send();
 	Http.onreadystatechange=(e) => {
-		if(Http.responseText == "success"){
-			var innerh = document.getElementById('id').innerHTML;
-			document.getElementById('books').innerHTML = "You have borrowed "+innerh;
-		}
-		else{
-			document.getElementById('books').innerHTML = "Borrow unsuccessful";
-		}
-		showitems();
+			document.getElementById('books').innerHTML = "Your attempt to borrow was a " + Http.responseText;
 	}
+	showitems();
+
 }
